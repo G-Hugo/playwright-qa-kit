@@ -117,7 +117,7 @@ function renderTickets(md) {
   for (const t of tickets) counts[t.sev] = (counts[t.sev] || 0) + 1;
   const order = ['Bloquant', 'Critique', 'Majeur', 'Mineur'];
 
-  let html = marked.parse(intro.replace(/^# .*\n/, ''));
+  let html = marked.parse(intro.replace(/^# .*\n/, '').replace('Captures dans `captures/`. ', ''));
   html = `<h1>12 tickets de bug</h1>
 <div class="note">
 <p><strong>Format et outil.</strong> Ces tickets sont rédigés au format Linear, parce que ce client n'avait pas d'outil. En mission, ils sont créés directement dans l'outil de l'équipe : Jira, Mantis Bug Tracker, GitHub Issues, Azure DevOps, Redmine, ou un tableau partagé s'il n'y a rien. La structure reste la même partout : un titre qui dit le symptôme, la sévérité, les étapes, l'obtenu, l'attendu, une preuve.</p>
