@@ -40,7 +40,7 @@ footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:v
 
   <div class="verdict"><strong>Verdict remis :</strong> le tunnel fonctionne pour un client standard, mais il accepte une commande vide et trois profils sur six ne peuvent pas commander. Pas livrable en l'état, quatre corrections avant mise en production.</div>
 
-  <h2>Les livrables</h2>
+  <h2>Pour le produit et le lead tech : les livrables</h2>
   <div class="grid">
     <a class="card main" href="rapport-fin-mission.html"><b>Rapport de fin de mission</b><span>Verdict, chiffres, top 5 des risques, état par parcours, recommandations · <u>version PDF</u> plus bas</span></a>
     <a class="card" href="tickets.html"><b>12 tickets de bug</b><span>Format Linear : sévérité, étapes, obtenu, attendu, captures</span></a>
@@ -52,8 +52,8 @@ footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:v
 
   <p><a href="rapport-fin-mission.pdf">Télécharger le rapport en PDF</a>, tel qu'il a été remis au client.</p>
 
-  <h2>Le code livré</h2>
-  <p>La suite de tests est dans le dépôt, prête à tourner dans une intégration continue. Les quatre bugs connus y sont annotés : elle prévient d'elle-même le jour où ils sont corrigés.</p>
+  <h2>Pour les développeurs et l'ops : le code livré</h2>
+  <p>La suite de tests est dans le dépôt GitHub, avec son workflow GitHub Actions : vos développeurs l'intègrent dans votre CI en moins d'une heure en suivant le README. Les quatre bugs connus y sont annotés : elle prévient d'elle-même le jour où ils sont corrigés.</p>
   <div class="grid">
     <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/tests/checkout.spec.ts"><b>tests/checkout.spec.ts</b><span>Le tunnel de commande, avec les bugs connus en échec attendu · sur GitHub</span></a>
     <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/explo/session-1.js"><b>Session exploratoire outillée</b><span>Le script qui a constaté les 12 anomalies, avec captures · sur GitHub</span></a>
