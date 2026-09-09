@@ -59,6 +59,7 @@ jobs:
           mkdir -p public/report
           [ -d playwright-report ] && cp -r playwright-report/. public/report/
           [ -d site ] && cp -r site/. public/
+          [ -f site/build.js ] && node site/build.js public
           [ -f examples/saucedemo/rapport-fin-mission.pdf ] && cp examples/saucedemo/rapport-fin-mission.pdf public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
