@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exemple de mission QA · Swag Labs</title>
+<meta name="description" content="Ce qu'un client reçoit après un audit QA de 2 jours : rapport, tickets, cas de test et suite Playwright, sur l'exemple de la boutique Swag Labs.">
+<style>
+:root{--bg:#F7F8F6;--surface:#fff;--ink:#14201F;--muted:#5B6866;--line:#D8DEDC;--accent:#0F766E;--accent-ink:#0B5B55;--accent-soft:#DDF1ED;--crit:#B42318;--crit-soft:#FCE9E6}
+@media (prefers-color-scheme:dark){:root{--bg:#0F1615;--surface:#161E1D;--ink:#E8EEEC;--muted:#98A6A3;--line:#263331;--accent:#3FB8AA;--accent-ink:#7ED4C9;--accent-soft:#163C38;--crit:#F58A7C;--crit-soft:#3A1A17}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 64px}
+.eyebrow{font-family:Consolas,"Courier New",monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.15;margin:8px 0 12px;text-wrap:balance}
+h2{font-family:Georgia,"Times New Roman",serif;font-size:1.35rem;margin:36px 0 12px}
+p{margin:0 0 12px;max-width:40em}
+.lead{color:var(--muted);font-size:1.1rem}
+.verdict{background:var(--surface);border-left:3px solid var(--crit);padding:14px 18px;margin:20px 0;border-radius:6px}
+.verdict strong{color:var(--crit)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:16px 0}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;text-decoration:none;color:var(--ink);transition:border-color .12s}
+.card:hover{border-color:var(--accent)}
+.card b{display:block;font-size:1.05rem;margin-bottom:4px}
+.card span{color:var(--muted);font-size:.93rem}
+.card.main{border-color:var(--accent);background:var(--accent-soft)}
+.facts{display:flex;gap:18px;flex-wrap:wrap;font-family:Consolas,"Courier New",monospace;font-size:.82rem;color:var(--muted);margin:0 0 8px}
+.facts span::before{content:"✓ ";color:var(--accent)}
+code{font-family:Consolas,"Courier New",monospace;font-size:.88em;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+a{color:var(--accent-ink)}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <span class="eyebrow">Exemple de mission · Audit QA express, 2 jours</span>
+  <h1>Ce que vous recevez à la fin d'un audit QA.</h1>
+  <p class="lead">Une boutique en ligne de démonstration, Swag Labs, six profils d'utilisateurs, une refonte du tunnel de commande à sécuriser. Deux jours plus tard, voilà ce que le client a entre les mains.</p>
+  <div class="facts"><span>28 cas de test</span><span>12 tickets</span><span>15 tests Playwright sur 5 navigateurs</span><span>rapport de 3 pages</span></div>
+
+  <div class="verdict"><strong>Verdict remis :</strong> le tunnel fonctionne pour un client standard, mais il accepte une commande vide et trois profils sur six ne peuvent pas commander. Pas livrable en l'état, quatre corrections avant mise en production.</div>
+
+  <h2>Les livrables</h2>
+  <div class="grid">
+    <a class="card main" href="rapport-fin-mission.pdf"><b>Rapport de fin de mission</b><span>PDF, 3 pages : verdict, chiffres, top 5 des risques, état par parcours, recommandations</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/tickets/tickets.md"><b>12 tickets de bug</b><span>Format Linear : sévérité, étapes, obtenu, attendu, captures</span></a>
+    <a class="card" href="report/"><b>Rapport Playwright interactif</b><span>Chaque test, chaque navigateur, avec traces et vidéos sur échec. Régénéré à chaque exécution</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/cas-de-test.md"><b>28 cas de test</b><span>Avec leur statut sur desktop et sur les cinq cibles</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/plan-de-test.md"><b>Plan de test</b><span>Une page, validée le premier matin : périmètre, approche, matrice de couverture</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/comptes-rendus.md"><b>Comptes-rendus de session</b><span>Cinq lignes après chaque session : fait, trouvé, bloqué, suite, question</span></a>
+  </div>
+
+  <h2>Le code livré</h2>
+  <p>La suite de tests est dans le dépôt, prête à tourner dans une intégration continue. Les quatre bugs connus y sont annotés : elle prévient d'elle-même le jour où ils sont corrigés.</p>
+  <div class="grid">
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/tests/checkout.spec.ts"><b>tests/checkout.spec.ts</b><span>Le tunnel de commande, avec les bugs connus en échec attendu</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit/blob/main/examples/saucedemo/explo/session-1.js"><b>Session exploratoire outillée</b><span>Le script qui a constaté les 12 anomalies, avec captures</span></a>
+    <a class="card" href="https://github.com/G-Hugo/playwright-qa-kit"><b>Le dépôt complet</b><span>Page Objects, fixtures, workflow GitHub Actions, reporter Jira / Linear</span></a>
+  </div>
+
+  <h2>L'application testée</h2>
+  <p>Swag Labs est une boutique d'entraînement éditée par Sauce Labs, avec des défauts volontaires. Vous pouvez la manipuler vous-même : <a href="https://www.saucedemo.com" rel="noopener">saucedemo.com</a>, identifiant <code>standard_user</code>, mot de passe <code>secret_sauce</code>. Essayez aussi <code>problem_user</code> ou <code>error_user</code> pour retrouver les tickets.</p>
+
+  <footer>
+    <span>Hugo Gaveau · ingénieur QA freelance · <a href="mailto:gaveau.hugo@gmail.com">gaveau.hugo@gmail.com</a></span>
+    <span><a href="https://www.linkedin.com/in/hugo-gaveau-7a5409135" rel="noopener">LinkedIn</a></span>
+  </footer>
+</main>
+</body>
+</html>

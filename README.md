@@ -2,12 +2,15 @@
 
 [![E2E Playwright](https://github.com/G-Hugo/playwright-qa-kit/actions/workflows/e2e.yml/badge.svg)](https://github.com/G-Hugo/playwright-qa-kit/actions/workflows/e2e.yml)
 
-Par [Hugo Gaveau](https://www.linkedin.com/in/hugo-gaveau-7a5409135), ingénieur QA freelance. Ce dépôt est la base que j'installe chez mes clients en mission courte, et il contient un **exemple complet de mission** dans [`examples/saucedemo/`](examples/saucedemo/) : plan de test, cas de test, 12 tickets, rapport de fin de mission en PDF, et la suite de tests correspondante (`tests/checkout.spec.ts`, avec les bugs connus annotés).
+Par [Hugo Gaveau](https://www.linkedin.com/in/hugo-gaveau-7a5409135), ingénieur QA freelance. Ce dépôt est la base que j'installe chez mes clients en mission courte.
 
+## Voir l'exemple de mission
 
-Base de tests end-to-end à cloner au début d'une mission. TypeScript, Page Objects, fixtures, rapport HTML, traces sur échec, CI GitHub Actions, et remontée automatique des échecs en tickets Jira ou Linear.
+**→ [https://g-hugo.github.io/playwright-qa-kit/](https://g-hugo.github.io/playwright-qa-kit/)** : la page à ouvrir pour voir ce qu'un client reçoit. Rapport de fin de mission en PDF, 12 tickets, 28 cas de test, et le rapport Playwright interactif régénéré à chaque exécution de la CI.
 
-Cible de démo : [saucedemo.com](https://www.saucedemo.com). Remplacer `BASE_URL` et les Page Objects par ceux du client.
+Les sources sont dans [`examples/saucedemo/`](examples/saucedemo/) et la suite de tests correspondante dans [`tests/checkout.spec.ts`](tests/checkout.spec.ts), avec les bugs connus annotés.
+
+Application testée par défaut : [saucedemo.com](https://www.saucedemo.com), une boutique d'entraînement (identifiants `standard_user` / `secret_sauce`). Pour un client, remplacer `BASE_URL` et les Page Objects par les siens.
 
 ## Lancer
 
@@ -70,7 +73,7 @@ Guides : `../02-outils/jira-setup.md` et `../02-outils/linear-setup.md`.
 
 ## CI
 
-`e2e.yml` tourne sur push `main`, sur chaque PR, et chaque jour ouvré à 8 h. Le rapport HTML et les traces sont publiés en artefact (14 jours). Secrets à créer dans le dépôt : `TEST_USER`, `TEST_PASSWORD`, et selon l'outil `JIRA_EMAIL` + `JIRA_API_TOKEN` ou `LINEAR_API_KEY`. Variables : `BASE_URL`, `ISSUE_TRACKER`, `JIRA_BASE_URL`, `JIRA_PROJECT_KEY`, `LINEAR_TEAM_ID`, `LINEAR_LABEL_IDS`.
+`e2e.yml` tourne sur push `main`, sur chaque PR, et chaque jour ouvré à 8 h. Le rapport HTML et les traces sont publiés en artefact (14 jours). Avec la variable de dépôt `PUBLISH_REPORT=true` et GitHub Pages en mode « GitHub Actions », le rapport HTML est aussi publié sur Pages à chaque push sur `main` (désactivé par défaut : ne l'activer que si le rapport peut être public). Secrets à créer dans le dépôt : `TEST_USER`, `TEST_PASSWORD`, et selon l'outil `JIRA_EMAIL` + `JIRA_API_TOKEN` ou `LINEAR_API_KEY`. Variables : `BASE_URL`, `ISSUE_TRACKER`, `JIRA_BASE_URL`, `JIRA_PROJECT_KEY`, `LINEAR_TEAM_ID`, `LINEAR_LABEL_IDS`.
 
 ## Conventions
 

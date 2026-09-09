@@ -8,6 +8,11 @@ on:
     - cron: '0 6 * * 1-5' # tous les jours ouvrés à 8 h Paris (6 h UTC)
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   e2e:
     runs-on: ubuntu-latest
@@ -43,3 +48,30 @@ jobs:
             playwright-report/
             test-results/
           retention-days: 14
+
+      # Publication du rapport HTML sur GitHub Pages. Désactivée par défaut : la variable de dépôt
+      # PUBLISH_REPORT=true l'active (Settings → Secrets and variables → Actions → Variables).
+      # Ne l'activer que sur un dépôt dont le rapport peut être public.
+      - name: Assembler la page publique
+        if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir -p public/report
+          [ -d playwright-report ] && cp -r playwright-report/. public/report/
+          [ -d site ] && cp -r site/. public/
+          [ -f examples/saucedemo/rapport-fin-mission.pdf ] && cp examples/saucedemo/rapport-fin-mission.pdf public/
+          touch public/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+        with:
+          path: public
+
+  pages:
+    needs: e2e
+    if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
