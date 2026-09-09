@@ -16,9 +16,10 @@ type Fixtures = {
   loggedIn: InventoryPage;
 };
 
+// `||` et non `??` : en CI, un secret absent arrive comme chaîne vide, pas comme undefined.
 export const credentials = {
-  user: process.env.TEST_USER ?? 'standard_user',
-  password: process.env.TEST_PASSWORD ?? 'secret_sauce',
+  user: process.env.TEST_USER || 'standard_user',
+  password: process.env.TEST_PASSWORD || 'secret_sauce',
 };
 
 export const test = base.extend<Fixtures>({
