@@ -52,8 +52,9 @@ jobs:
       # Publication du rapport HTML sur GitHub Pages. Désactivée par défaut : la variable de dépôt
       # PUBLISH_REPORT=true l'active (Settings → Secrets and variables → Actions → Variables).
       # Ne l'activer que sur un dépôt dont le rapport peut être public.
+      # !cancelled() et non always() : un run annulé ne doit pas déployer une page sans rapport.
       - name: Assembler la page publique
-        if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+        if: !cancelled() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
         run: |
           mkdir -p public/report
           [ -d playwright-report ] && cp -r playwright-report/. public/report/
@@ -61,13 +62,13 @@ jobs:
           [ -f examples/saucedemo/rapport-fin-mission.pdf ] && cp examples/saucedemo/rapport-fin-mission.pdf public/
           touch public/.nojekyll
       - uses: actions/upload-pages-artifact@v3
-        if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+        if: !cancelled() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
         with:
           path: public
 
   pages:
     needs: e2e
-    if: always() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
+    if: !cancelled() && vars.PUBLISH_REPORT == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
