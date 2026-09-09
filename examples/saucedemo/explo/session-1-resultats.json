@@ -1,0 +1,122 @@
+[
+  {
+    "id": "CHK-EMPTY",
+    "ok": false,
+    "detail": "panier vide : 0 article(s) à l'étape 2, page finale = \"Thank you for your order!\""
+  },
+  {
+    "id": "CHK-VALID",
+    "ok": true,
+    "detail": "vide → \"Error: First Name is required\" ; sans nom → \"Error: Last Name is required\" ; code postal \"abc!!\" accepté = true"
+  },
+  {
+    "id": "CHK-SPACES",
+    "ok": false,
+    "detail": "champs remplis d'espaces acceptés = true"
+  },
+  {
+    "id": "CHK-TOTALS",
+    "ok": true,
+    "detail": "prix $29.99 + $9.99 = 39.98 ; Item total: $39.98 ; Tax: $3.20 ; Total: $43.18"
+  },
+  {
+    "id": "SEC-XSS",
+    "ok": true,
+    "detail": "payload exécuté = false (le prénom n'est pas réaffiché, à confirmer)"
+  },
+  {
+    "id": "RESET-STATE",
+    "ok": false,
+    "detail": "après reset : badge=0, bouton \"Remove\" encore affiché=true"
+  },
+  {
+    "id": "CART-RELOAD",
+    "ok": true,
+    "detail": "badge après reload"
+  },
+  {
+    "id": "AUTH-BACK",
+    "ok": true,
+    "detail": "après logout + retour : https://www.saucedemo.com/ | Epic sadface: You can only access '/inventory.html' when you are logged in."
+  },
+  {
+    "id": "PERM-/checkout-complete.html",
+    "ok": true,
+    "detail": "/checkout-complete.html → / \"Epic sadface: You can only access '/checkout-complete.html' when you are logged in.\""
+  },
+  {
+    "id": "PERM-/cart.html",
+    "ok": true,
+    "detail": "/cart.html → / \"Epic sadface: You can only access '/cart.html' when you are logged in.\""
+  },
+  {
+    "id": "PERM-/checkout-step-two.html",
+    "ok": true,
+    "detail": "/checkout-step-two.html → / \"Epic sadface: You can only access '/checkout-step-two.html' when you are logged in.\""
+  },
+  {
+    "id": "ITEM-404",
+    "ok": true,
+    "detail": "id=999 → nom=\"ITEM NOT FOUND\", prix=\"$√-1\""
+  },
+  {
+    "id": "FOOT-LINKS",
+    "ok": true,
+    "detail": "Twitter:_blank:noreferrer | Facebook:_blank:noreferrer | LinkedIn:_blank:noreferrer"
+  },
+  {
+    "id": "SORT-PRICE",
+    "ok": true,
+    "detail": "7.99 9.99 15.99 15.99 29.99 49.99"
+  },
+  {
+    "id": "MOB-OVERFLOW",
+    "ok": true,
+    "detail": "scrollWidth 390 / innerWidth 390"
+  },
+  {
+    "id": "PERF-LOGIN",
+    "ok": false,
+    "detail": "connexion performance_glitch_user en 5621 ms"
+  },
+  {
+    "id": "PROB-IMAGES",
+    "ok": false,
+    "detail": "1 image(s) distincte(s) pour 6 produits : /assets/sl-404-Cq1a9k9X.jpg"
+  },
+  {
+    "id": "PROB-ADD",
+    "ok": false,
+    "detail": "problem_user ajoute la Fleece Jacket → badge=0"
+  },
+  {
+    "id": "PROB-LASTNAME",
+    "ok": false,
+    "detail": "problem_user saisit \"Dupont\" dans Nom → valeur=\"\""
+  },
+  {
+    "id": "DIALOG-error_user",
+    "ok": false,
+    "detail": "Sorting is broken! This error has been reported to Backtrace."
+  },
+  {
+    "id": "ERR-REMOVE",
+    "ok": false,
+    "detail": "error_user retire le Backpack → badge=1"
+  },
+  {
+    "id": "ERR-FINISH",
+    "ok": false,
+    "detail": "error_user clique Finish → /checkout-step-two.html ; erreurs JS : Cannot read properties of undefined (reading 'value') / ai.cesetRart is not a function"
+  },
+  {
+    "id": "AUTH-LOCKED",
+    "ok": true,
+    "detail": "locked_out_user → \"Epic sadface: Sorry, this user has been locked out.\""
+  },
+  {
+    "id": "JS-ERRORS-standard",
+    "ok": true,
+    "detail": "aucune erreur JS avec standard_user"
+  }
+]

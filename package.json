@@ -1,0 +1,23 @@
+{
+  "name": "playwright-qa-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Base Playwright TypeScript pour missions QA courtes : Page Objects, fixtures, CI, remontée des échecs en tickets Jira / Linear",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:report": "playwright test --reporter=html,./reporters/issue-reporter.ts",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "dotenv": "^17.0.0",
+    "marked": "^16.4.2",
+    "typescript": "^5.9.0"
+  }
+}
